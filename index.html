@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browser demo for real-time driver drowsiness detection using MediaPipe face landmarks.">
+    <title>Driver Drowsiness Detection</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Driver drowsiness detector">
+        <div class="video-stage" id="videoStage">
+          <video id="video" playsinline muted></video>
+          <canvas id="overlay"></canvas>
+          <div class="stage-status" id="stageStatus">Camera idle</div>
+        </div>
+
+        <aside class="control-panel" aria-label="Detection controls">
+          <div>
+            <p class="eyebrow">Live CV demo</p>
+            <h1>Driver Drowsiness Detection</h1>
+          </div>
+
+          <div class="status-card" id="statusCard">
+            <span class="status-dot" id="statusDot"></span>
+            <div>
+              <p class="status-label" id="statusLabel">Ready</p>
+              <p class="status-detail" id="statusDetail">Start the camera to run detection locally in your browser.</p>
+            </div>
+          </div>
+
+          <div class="metrics-grid" aria-label="Detection metrics">
+            <div>
+              <span>EAR</span>
+              <strong id="earMetric">0.00</strong>
+            </div>
+            <div>
+              <span>MAR</span>
+              <strong id="marMetric">0.00</strong>
+            </div>
+            <div>
+              <span>Tilt</span>
+              <strong id="tiltMetric">0 deg</strong>
+            </div>
+            <div>
+              <span>FPS</span>
+              <strong id="fpsMetric">0</strong>
+            </div>
+          </div>
+
+          <div class="signal-list" aria-label="Detected signals">
+            <div class="signal" id="eyeSignal">Eyes open</div>
+            <div class="signal" id="mouthSignal">No yawn</div>
+            <div class="signal" id="headSignal">Head stable</div>
+          </div>
+
+          <div class="button-row">
+            <button id="startButton" type="button">Start camera</button>
+            <button id="stopButton" type="button" disabled>Stop</button>
+          </div>
+
+          <p class="privacy-note">Video stays on this device. The demo uses client-side MediaPipe landmarks and does not upload frames.</p>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
